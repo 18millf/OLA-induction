@@ -6,12 +6,19 @@ from bet import Bet
 import rules
 
 class Roulette:
-    def __init__(self, players) -> None:
+    def __init__(self) -> None:
         self.bets = {}
         self.players = {}
-        
-        for player in players:
-            self.players[player] = rules.START_BALANCE # players dictionary has the players name and balance
+        self.spin_history = list()
+
+    def add_player(self, player: str) -> None:
+        self.players[player] = rules.START_BALANCE
+
+    def remove_players(self, player: str) -> bool:
+        if player in self.players:
+            self.players.remove(player)
+            return True # remove was successful
+        return False # player cannot be removed, as player does not exist
 
     def bet(self, player: str, bet: Bet, specific: int, amount: int) -> bool:
         if player not in self.players:
@@ -21,9 +28,11 @@ class Roulette:
 
         return True
 
+    # INTERNAL MEMBER FUNCTION
     def _spin(self) -> int:
         return range(1, 36)
         
+    # INTERNAL MEMBER FUNCTION
     def _apply_spin(self, spin: int):
         for player in self.players:
             bet_info = self.bets[player]
