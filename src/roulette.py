@@ -24,7 +24,7 @@ class Roulette:
     def _spin(self) -> int:
         return range(1, 36)
         
-    def apply_spin(self, spin: int):
+    def _apply_spin(self, spin: int):
         for player in self.players:
             bet_info = self.bets[player]
 
@@ -43,7 +43,12 @@ class Roulette:
                 case Bet.SMALL:
                     if spin >= 1 and spin <= 12:
                         self.players[player] += bet_info.amount * rules.SMALL_MULT
+                case Bet.MEDIUM:
+                    if spin >= 13 and spin <= 24:
+                        self.players[player] += bet_info.amount * rules.MEDIUM_MULT
+                case Bet.LARGE:
+                    if spin >= 25 and spin <= 36:
+                        self.players[player] += bet_info.amount * rules.LARGE_MULT
 
-                # TODO: stuff for MEDIUM and LARGE
-
+    
 
