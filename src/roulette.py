@@ -17,7 +17,7 @@ class Roulette:
         if player not in self.players:
             return False # player not in the game
 
-        self.bets[player] = BetInfo(bet, specific, amount)
+        self.bets[player] = BetInfo(player, bet, specific, amount)
 
         return True
 
