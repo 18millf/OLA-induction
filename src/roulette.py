@@ -1,5 +1,5 @@
 # stlib
-from random import range
+from random import randint
 
 from bet_info import BetInfo
 from spin_info import SpinInfo
@@ -31,7 +31,7 @@ class Roulette:
 
     # INTERNAL MEMBER FUNCTION
     def _spin(self) -> int:
-        return range(1, 36)
+        return randint(1, 36)
         
     # INTERNAL MEMBER FUNCTION
     def _apply_spin(self, spin: int) -> None:
