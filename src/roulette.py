@@ -10,14 +10,14 @@ class Roulette:
     def __init__(self) -> None:
         self.bets = dict()
         self.players = dict()
-        self.spin_history = list()
+        self.spin_history = list() # technically redundant, but just in case
 
     def add_player(self, player: str) -> None:
         self.players[player] = rules.START_BALANCE
 
     def remove_player(self, player: str) -> int:
         if player in self.players:
-            return self.players.pop(player)
+            return self.players.pop(player) # remove player and return balance
         return None # player cannot be removed, as player does not exist
 
     def bet(self, player: str, bet: Bet, specific: int, amount: int) -> bool:
