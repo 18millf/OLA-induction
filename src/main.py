@@ -25,7 +25,6 @@ def main():
                 break
 
             game.add_player(inp)
-            print(f"\"{inp}\"")
 
         for player in game.players:
             print(f"{player}, please place a bet.")
