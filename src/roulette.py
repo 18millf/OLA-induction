@@ -15,11 +15,10 @@ class Roulette:
     def add_player(self, player: str) -> None:
         self.players[player] = rules.START_BALANCE
 
-    def remove_players(self, player: str) -> bool:
+    def remove_player(self, player: str) -> int:
         if player in self.players:
-            self.players.remove(player)
-            return True # remove was successful
-        return False # player cannot be removed, as player does not exist
+            return self.players.pop(player)
+        return None # player cannot be removed, as player does not exist
 
     def bet(self, player: str, bet: Bet, specific: int, amount: int) -> bool:
         if player not in self.players:
