@@ -29,11 +29,11 @@ class Roulette:
         return True
 
     # INTERNAL MEMBER FUNCTION
-    def _spin(self) -> int:
+    def __spin(self) -> int:
         return randint(1, 36)
         
     # INTERNAL MEMBER FUNCTION
-    def _apply_spin(self, spin: int) -> None:
+    def __apply_spin(self, spin: int) -> None:
         for player in self.players:
             bet_info = self.bets[player]
 
@@ -60,8 +60,8 @@ class Roulette:
                         self.players[player] += bet_info.amount * rules.LARGE_MULT
 
     def spin(self) -> SpinInfo:
-        spin_result = self._spin()
-        self._apply_spin(spin_result)
+        spin_result = self.__spin()
+        self.__apply_spin(spin_result)
 
         # an info object for displaying values
         spin_info = SpinInfo(spin_result, self.bets)
