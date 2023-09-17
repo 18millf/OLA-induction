@@ -4,7 +4,6 @@ from spin_info import SpinInfo
 
 def main():
 
-    # TODO: Start the game and do outputs and stuff
     game = Roulette()
 
     init_player = input("Enter player name: ")
