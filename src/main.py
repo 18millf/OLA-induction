@@ -1,3 +1,4 @@
+from bet import Bet
 from roulette import Roulette
 from spin_info import SpinInfo
 
@@ -43,7 +44,7 @@ def main():
 
             amount: int = int(input("How much would you like to bet? "))
 
-            game.bet(player, opt - 1, specific, amount)
+            game.bet(player, Bet(opt - 1), specific, amount)
 
         spin_result: SpinInfo = game.spin()
 
