@@ -56,8 +56,30 @@ def main():
             player_balance = list(game.players.values())[i]
             print(f"{i + 1}.    {player_name}    £{player_balance}")
 
-        #while True:
-            # TODO: Ask what players to remove
+        for player in game.players:
+            if game.players[player] <= 0:
+                game.remove_player(player)
+                print(f"{player} has been forcefully removed; they have gone bankrupt.")
+
+        if len(game.players) == 0: # end game if no players
+            break
+
+        while True:
+            inp = input(f"Enter what players have walked, press enter when done: ")
+
+            if inp == "":
+                break
+            
+            removedBalance = game.remove_player(inp)
+            if removedBalance == None:
+                print(f"That player doesnt exist. ({inp})")
+                continue
+
+            print(f"{inp} walked with £{removedBalance}.")
+            
+
+    print("No players left, game end.")
+
 
 if __name__ == "__main__":
     main()
